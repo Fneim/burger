@@ -1,0 +1,44 @@
+<h1>Meaty Universe!</h1>
+
+<h2>What's Got Your Tastebuds Singing?!</h2>
+
+<h3>Your Plate</h3>
+<ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.name}}
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="false">
+          <button type="submit">DEVOUR!</button>
+        </form>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h3>You're Chunky Belly</h3>
+<ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.name}}
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Oh no! Toliet!</button>
+        </form>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+<hr>
+
+<h3>Add a Burger</h3>
+<form class="create-update-form" action="/" method="POST">
+  <div class="form-group">
+    <label for="bur">Burger: </label>
+    <input type="text" id=bur name="name">
+    <button type="submit">Add To Plate</button>
+  </div>
+</form>

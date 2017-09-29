@@ -15,9 +15,19 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.insertOne(["burger_name"], [req.body.burgerName], function() {
+  burger.insertOne(["burger_name", "devoured"]
+  , [req.body.name, req.body.devoured], function() {
     res.redirect("/");
   })
 })
 
+router.put("/:id", function(req, res) {
+  var id="id="+req.params.id;
+
+  burger.updateOne({
+    devoured: req.body.devoured
+  }, id, function() {
+    res.redirect("/");
+  });
+});
 module.exports = router;
