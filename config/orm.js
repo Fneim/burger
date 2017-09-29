@@ -8,17 +8,18 @@ var orm = {
         cb(data);
     })
   },
-  insertOne: function(whatToInsert, table, col, cb) {
+  insertOne: function(table, col, val, cb) {
     var queryString = "INSERT INTO ?? (??) VALUES (??)";
-    connection.query(queryString, [table, col, whatToInsert], function(err, data) {
+    connection.query(queryString, [table, cols, vals], function(err, data) {
       console.log(data);
       cb(data);
     })
   },
-  updateOne: function(table, colOne, valOne, colTwo, valTwo, cb) {
-    var queryString = "UPDATE " + table + " SET ??=? WHERE ??=?";
+  updateOne: function(table, objVals, condition, cb) {
+    var queryString = "UPDATE " + table + " SET " + objVals + " WHERE " + condition;
+
     console.log(queryString);
-    connection.query(queryString, [colOne, valOne, colTwo, valTwo], function(err, data) {
+    connection.query(queryString, function(err, data) {
       if(err) throw err;
       console.log(data);
       cb(data);

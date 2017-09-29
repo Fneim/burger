@@ -14,14 +14,14 @@
           <button type="submit">DEVOUR!</button>
         </form>
       </li>
-    {{/if}}
+    {{/unless}}
   {{/each}}
 </ul>
 
 <h3>You're Chunky Belly</h3>
 <ul>
   {{#each burgers}}
-    {{#unless this.devoured}}
+    {{#if this.devoured}}
       <li>
         {{this.name}}
         <form action="/{{this.id}}?_method=PUT" method="POST">

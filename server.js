@@ -4,11 +4,12 @@ var methodOverride = require("method-override");
 
 var app = express();
 
-var port = 8080;
+var port = 5770;
 
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 app.use(methodOverride("_method"));
 

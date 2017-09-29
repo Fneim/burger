@@ -22,11 +22,11 @@ router.post("/", function(req, res) {
 })
 
 router.put("/:id", function(req, res) {
-  var id="id="+req.params.id;
+  var condition = "id="+req.params.id;
 
   burger.updateOne({
     devoured: req.body.devoured
-  }, id, function() {
+  }, condition, function() {
     res.redirect("/");
   });
 });
